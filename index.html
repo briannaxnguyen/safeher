@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SafeHer</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+	<header>
+		<nav>
+			<h1>SafeHer</h1>
+			<ul>
+				<li><a href="#map">Map</a></li>
+				<li><a href="#profile">Profile</a></li>
+				<li><a href="#messages">Messages</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="map-section">
+			<h2>Campus Map</h2>
+			<div id="map"></div>
+		</section>
+		<aside id="profile">
+			<h2>Your Profile</h2>
+			<div class="profile-card">
+				<img src="https://placehold.co/100x100" alt="Profile Picture" class="profile-pic">
+				<h3>Username</h3>
+				<p>Status: <span class="status available">Available</span></p>
+				<button>Edit Profile</button>
+			</div>
+		</aside>
+		<section id="other-users">
+			<h2>Other Users</h2>
+			<div id="other-users-list" class="user-list"></div>
+			<div id="pagination-controls" class="pagination-controls"></div>
+		</section>
+		<section id="messages">
+			<h2>Messages</h2>
+			<div class="messages-list">
+				<!-- Messages will appear here -->
+			</div>
+			<form id="message-form">
+				<input type="text" placeholder="Type your message..." required>
+				<button type="submit">Send</button>
+			</form>
+		</section>
+		</main>
+		<!-- User Profile Modal -->
+		<div id="user-profile-modal" class="modal" style="display:none;">
+			<div class="modal-content">
+				<span class="close" id="close-profile-modal">&times;</span>
+				<div id="user-profile-details">
+					<!-- User profile details will be injected here -->
+				</div>
+			</div>
+		</div>
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<script src="script.js"></script>
+	</body>
+	</html>
