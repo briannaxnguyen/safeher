@@ -11,4 +11,4 @@ SafeHer offers:
 - 💬 Messaging to connect with other users!
 
 
-Made with love by Anaiya, Avani, Izzy and Brianna ❤️
+Made with love by Anaiya, Avani and Brianna ❤️
