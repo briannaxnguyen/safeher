@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>SafeHer</title>
+ <link rel="stylesheet" href="styles.css">
+ <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+ <header style="display: flex; align-items: center; gap: 1rem;">
+   <div style="display: flex; align-items: center; gap: 0.7rem;">
+     <h1 style="margin: 0;">SafeHer</h1>
+     <img src="safeher (3).png" alt="SafeHer Logo" style="height: 48px; border-radius: 8px; object-fit: contain; margin-left: 8px;" onerror="this.alt='Logo not found'">
+   </div>
+   <div style="display: flex; gap: 0.7rem; margin-left: auto; align-items: center;">
+     <a href="my_friends.html" class="btn" style="font-size: 1.1rem; margin-right:0.7rem;">My Friends</a>
+     <button class="btn logout-btn" id="logout-btn" style="font-size: 1.1rem;">Logout</button>
+     <button id="dark-mode-toggle" class="btn" style="font-size:1.1rem;">Dark Mode</button>
+   </div>
+ </header>
+
+
+ <main>
+   <section id="map-section">
+     <h2>Campus Map</h2>
+     <div id="map"></div>
+   </section>
+
+
+   <aside id="profile">
+     <h2>Your Profile</h2>
+     <div class="profile-card">
+       <img src="https://placehold.co/100x100" alt="Profile Picture" class="profile-pic" id="profile-pic-display">
+       <h3 id="profile-name">Username</h3>
+       <p>Status: <span class="status available" id="profile-status">Available</span></p>
+       <p>Mode: <span id="profile-mode">Walk</span></p>
+       <button class="btn" id="edit-profile-btn">Edit Profile</button>
+       <button class="btn" id="emergency-btn">Emergency</button>
+       <div id="destination-section">
+         <h3>Set Your Destination</h3>
+         <input type="text" id="destination-input" placeholder="Enter destination...">
+         <button class="btn" id="set-destination-btn">Go</button>
+       </div>
+     </div>
+   </aside>
+
+
+   <section id="other-users">
+     <h2>Other Users</h2>
+     <div id="other-users-list" class="user-list"></div>
+     <div id="pagination-controls" class="pagination-controls"></div>
+   </section>
+
+
+   <section id="messages">
+     <h2>Messages</h2>
+     <div class="messages-list"></div>
+     <form id="message-form">
+       <input type="text" placeholder="Type your message..." required>
+       <button type="submit" class="btn">Send</button>
+     </form>
+   </section>
+ </main>
+
+
+ <!-- User Profile Modal -->
+ <div id="user-profile-modal" class="modal">
+   <div class="modal-content">
+     <span class="close" id="close-profile-modal">&times;</span>
+     <div id="user-profile-details"></div>
+   </div>
+ </div>
+
+
+ <!-- Edit Profile Modal -->
+ <div id="edit-profile-modal" class="modal">
+   <div class="modal-content">
+     <span class="close" id="close-edit-modal">&times;</span>
+     <form id="edit-profile-form" class="edit-profile-form">
+       <div class="input-group">
+         <label for="first-name">First Name:</label>
+         <input type="text" id="first-name" required>
+       </div>
+       <div class="input-group">
+         <label for="last-name">Last Name:</label>
+         <input type="text" id="last-name" required>
+       </div>
+       <div class="input-group">
+         <label for="mode-select">Mode of Transport:</label>
+         <select id="mode-select">
+           <option value="Walk">Walk</option>
+           <option value="Car">Car</option>
+         </select>
+       </div>
+       <div class="input-group">
+         <label for="status-select">Status:</label>
+         <select id="status-select">
+           <option value="available">Available</option>
+           <option value="unavailable">Unavailable</option>
+           <option value="in-transit">In Transit</option>
+         </select>
+       </div>
+       <div class="input-group">
+         <label for="profile-pic-input">Profile Picture:</label>
+         <input type="file" id="profile-pic-input" accept="image/*">
+       </div>
+       <button type="submit" class="btn">Save</button>
+     </form>
+   </div>
+ </div>
+
+
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+ <script src="script.js"></script>
+ <script>
+   // Dark mode toggle
+   const darkModeBtn = document.getElementById('dark-mode-toggle');
+   function setDarkMode(on) {
+     if(on) {
+       document.body.classList.add('dark-mode');
+       localStorage.setItem('darkMode', 'on');
+       darkModeBtn.textContent = 'Light Mode';
+     } else {
+       document.body.classList.remove('dark-mode');
+       localStorage.setItem('darkMode', 'off');
+       darkModeBtn.textContent = 'Dark Mode';
+     }
+   }
+   darkModeBtn.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+   // On load, set mode from localStorage
+   if(localStorage.getItem('darkMode') === 'on') setDarkMode(true);
+ </script>
+</body>
+</html>
