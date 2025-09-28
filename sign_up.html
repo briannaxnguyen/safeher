@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | SafeHer</title>
+  <link rel="stylesheet" href="sign_up.css">
+</head>
+<body>
+  <div class="signup-container">
+   <form class="signup-form" id="signup-form">
+          <h2>Create Account</h2>
+          <div class="input-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+          </div>
+          <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+          </div>
+          <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+          </div>
+          <div class="input-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" required>
+          </div>
+          <button type="submit" class="signup-btn">Sign Up</button>
+          <p class="login-link">Already have an account? <a href="index.html">Log in</a></p>
+            </form>
+            <!-- Success Modal -->
+            <div id="success-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:1000;">
+                <div style="background:#fff;padding:2rem 2.5rem;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.12);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;max-width:350px;">
+                    <h3 style="color:#2d3a4a;margin-bottom:1rem;">Success!</h3>
+                    <p>Your account has been successfully created!</p>
+                    <button onclick="document.getElementById('success-modal').style.display='none'" style="margin-top:1.2rem;padding:0.7rem 1.5rem;background:#ff69b4;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">Close</button>
+                </div>
+            </div>
+  </div>
+<script>
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+   e.preventDefault();
+   // Check all fields are filled
+   const name = document.getElementById('name').value.trim();
+   const email = document.getElementById('email').value.trim();
+   const password = document.getElementById('password').value.trim();
+   const confirm = document.getElementById('confirm-password').value.trim();
+   if(name && email && password && confirm) {
+       document.getElementById('success-modal').style.display = 'block';
+       // Optionally, reset form
+       this.reset();
+   }
+});
+</script>
+</body>
+</html>
